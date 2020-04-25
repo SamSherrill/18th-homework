@@ -1,3 +1,5 @@
+// pulled from a unit 17, act 26 (I think). May need changes.
+
 let db;
 // create a new db request for a "budget" database.
 const request = indexedDB.open("budget", 1);
