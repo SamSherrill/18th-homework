@@ -1,7 +1,6 @@
-// Copied from act 14, unit 18. Needed changes. Might need more.
 {
-  "name": "Notetaker",
-  "short_name": "Notetaker",
+  "name": "Budget App",
+  "short_name": "Budget App",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
