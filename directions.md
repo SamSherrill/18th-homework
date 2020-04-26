@@ -66,7 +66,7 @@ Additionally, you should see your transaction stored in the IndexedDB under Appl
 
 4. Commit
 
-## Create the Service Worker
+## Create the Service Worker - DONE
 
 1. Create a new `service-worker.js` file in your public folder.
 2. Modify the `service-worker.js` file to include the following:
@@ -194,3 +194,8 @@ self.addEventListener("fetch", function (evt) {
 ![Data Cache](images/data-cache.png)
 
 7. Confirm you are able to access your application offline by selecting Service Workers, and checking the "Offline" checkbox. 
+
+## Deploy to Heroku
+
+**Jonathan didn't include this in the written instructions, but demoed it online.**
+

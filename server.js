@@ -6,7 +6,7 @@ const compression = require("compression");
 // Needs changes to be made ready for Heroku. See end of video,
 // or previous code used to deploy.
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -27,5 +27,5 @@ mongoose.connect("mongodb://localhost/budget", {
 app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+  console.log(`Server listening on: http://localhost:${PORT}`);
 });
