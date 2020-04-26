@@ -3,6 +3,9 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
+// Needs changes to be made ready for Heroku. See end of video,
+// or previous code used to deploy.
+
 const PORT = 3000;
 
 const app = express();

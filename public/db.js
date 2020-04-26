@@ -1,68 +1,66 @@
-// pulled from a unit 17, act 26 (I think). May need changes.
-
 let db;
 // create a new db request for a "budget" database.
-const request = indexedDB.open("budget", 1);
+const request = window.indexedDB.open("budget", 1);
 
-request.onupgradeneeded = function(event) {
-   // create object store called "pending" and set autoIncrement to true
-  const db = event.target.result;
-  db.createObjectStore("pending", { autoIncrement: true });
-};
+const accessObjectStore = () => {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const pendingStore = transaction.objectStore("pending");
+  return pendingStore;
+}
 
-request.onsuccess = function(event) {
+request.onupgradeneeded = function (event) {
+  // create object store called "pending" and set autoIncrement to true
   db = event.target.result;
 
-  // check if app is online before reading from db
+  // NOT SURE WE HAVE THIS CORRECT:
+  db.createObjectStore("pending", {
+    autoIncrement: true
+  });
+};
+
+request.onsuccess = function (event) {
+  db = event.target.result;
+
   if (navigator.onLine) {
     checkDatabase();
   }
 };
 
-request.onerror = function(event) {
-  console.log("Woops! " + event.target.errorCode);
+request.onerror = function (event) {
+  // log error here
+  console.log("Event error: ", event.target.errorCode);
 };
 
 function saveRecord(record) {
   // create a transaction on the pending db with readwrite access
-  const transaction = db.transaction(["pending"], "readwrite");
-
   // access your pending object store
-  const store = transaction.objectStore("pending");
-
   // add record to your store with add method.
-  store.add(record);
-}
+  accessObjectStore().add(record);
+};
 
 function checkDatabase() {
   // open a transaction on your pending db
-  const transaction = db.transaction(["pending"], "readwrite");
   // access your pending object store
-  const store = transaction.objectStore("pending");
   // get all records from store and set to a variable
-  const getAll = store.getAll();
+  const getAll = accessObjectStore().getAll();
 
-  getAll.onsuccess = function() {
+  getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
       fetch("/api/transaction/bulk", {
-        method: "POST",
-        body: JSON.stringify(getAll.result),
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => response.json())
-      .then(() => {
-        // if successful, open a transaction on your pending db
-        const transaction = db.transaction(["pending"], "readwrite");
-
-        // access your pending object store
-        const store = transaction.objectStore("pending");
-
-        // clear all items in your store
-        store.clear();
-      });
+          method: "POST",
+          body: JSON.stringify(getAll.result),
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+          }
+        })
+        .then(response => response.json())
+        .then(() => {
+          // if successful, open a transaction on your pending db
+          // access your pending object store
+          // clear all items in your store
+          accessObjectStore().clear();
+        });
     }
   };
 }

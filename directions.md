@@ -4,7 +4,7 @@ This is an example Progressive Web Application with detailed steps to make it fu
 
 **Pulled from Jonathan's PWA example, per his directions.**
 
-## Setup
+## Setup - DONE
 
 1. Copy the files and folders from your Develop folder in the 18-PWA/02-Homework folder. Commit.
 2. Install node packages
@@ -22,7 +22,7 @@ Commit
 
 ![Robo 3T](images/robo-3t-budget-database.png)
 
-## Create the Web Manifest
+## Create the Web Manifest - DONE
 
 For the following steps, reference activity 14, 18-PWA/01-Activities/14-Stu_Notetaker_PWA
 
@@ -47,7 +47,7 @@ If you cleared your site data, simply reload the page and visit the manifest sec
 
 5. Commit
 
-## Add Offline Storage with IndexedDB
+## Add Offline Storage with IndexedDB - DONE
 
 1. Copy the db.js file from 17-NoSQL/01-Activities/26-Stu-Mini-Project/Solved/public into your budget app public folder.
 2. Link your db.js file in your index.html
