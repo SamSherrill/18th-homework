@@ -1,6 +1,8 @@
 # Unit 18 PWA Homework: Online/Offline Budget Trackers
 
-Add functionality to our existing Budget Tracker application to allow for offline access and functionality.
+This is a Budget Tracker application that also allows for offline access and functionality.
+
+![App Preview](readme-screenshots/screenshot-for-readme.jpg)
 
 The user will be able to add expenses and deposits to their budget with or without a connection. When entering transactions offline, they should populate the total when brought back online.
 
@@ -32,11 +34,9 @@ THEN that will be shown on the page, and added to their transaction history when
 - - -
 
 
-## Submission on BCS
+## Links
 
-* You are required to submit the following:
+The deployed application: [https://dry-island-23170.herokuapp.com](https://dry-island-23170.herokuapp.com/)
 
-  * the URL to the deployed application
-
-  * the URL to the Github repository
+The Github repository: [https://github.com/SamSherrill/18th-homework](https://github.com/SamSherrill/18th-homework)
 
